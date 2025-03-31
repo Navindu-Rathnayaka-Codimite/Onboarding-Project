@@ -1,0 +1,16 @@
+export const api = {
+    version: Module.cwrap('version', 'number', []),
+    create_buffer: Module.cwrap('create_buffer', 'number', ['number', 'number']),
+    destroy_buffer: Module.cwrap('destroy_buffer', '', ['number']),
+    apply_monochrome: Module.cwrap('apply_monochrome', '', ['number', 'number', 'number']),
+    apply_bnw: Module.cwrap('apply_bnw', '', ['number', 'number', 'number']),
+    apply_vivid: Module.cwrap('apply_vivid', '', ['number', 'number', 'number']),
+    apply_bright: Module.cwrap('apply_bright', '', ['number', 'number', 'number']),
+    apply_brightness: Module.cwrap('apply_brightness_adjustment', '', ['number', 'number', 'number', 'number']),
+    apply_contrast: Module.cwrap('apply_contrast_adjustment', '', ['number', 'number', 'number', 'number']),
+    apply_saturation: Module.cwrap('apply_saturation_adjustment', '', ['number', 'number', 'number', 'number']),
+    apply_highlights: Module.cwrap('apply_highlights_adjustment', '', ['number', 'number', 'number', 'number']),
+    apply_shadows: Module.cwrap('apply_shadows_adjustment', '', ['number', 'number', 'number', 'number']),
+    apply_crop: Module.cwrap('apply_crop', '', ['number', 'number', 'number', 'number', 'number', 'number', 'number', 'boolean']),
+    apply_quality_scale: Module.cwrap('apply_quality_scale', 'number', ['number', 'number', 'number', 'number']),
+  };

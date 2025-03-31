@@ -1,0 +1,454 @@
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    height: 97.5vh;
+    overflow: hidden;
+}
+
+.sidebar h1 {
+    padding: 10px 0;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.sidebar-content {
+    overflow-y: auto;
+    flex-grow: 1;
+    margin-right: -10px;
+    padding-right: 10px;
+}
+
+.sidebar-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.sidebar-content::-webkit-scrollbar-track {
+    background: #444;
+    border-radius: 4px;
+}
+
+.sidebar-content::-webkit-scrollbar-thumb {
+    background: #666;
+    border-radius: 4px;
+}
+
+.sidebar-content::-webkit-scrollbar-thumb:hover {
+    background: #777;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+}
+
+.content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 90vh;
+    gap: 20px;
+    position: relative;
+}
+
+#image-preview {
+    height: 80%;
+    object-fit: cover;
+    position: relative;
+}
+
+#exportBtn, #resetBtn, #cancelBtn {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+#exportBtn {
+    background-color: green;
+    color: white;
+}
+
+#exportBtn:hover {
+    background-color: darkgreen;
+}
+
+#resetBtn {
+    background-color: #007bff;
+    color: white;
+}
+
+#resetBtn:hover {
+    background-color: #0056b3;
+}
+
+#cancelBtn {
+    background-color: #dc3545;
+    color: white;
+}
+
+#cancelBtn:hover {
+    background-color: #c82333;
+}
+
+.topBar {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+#app {
+    background-color: whitesmoke;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+#dropArea {
+    border: 2px dashed #ccc;
+    border-radius: 20px;
+    width: 80%;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: #ccc;
+    flex-direction: column;
+    cursor: pointer;
+    margin-top: 40px;
+}
+
+#dropArea:hover {
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+#fileElem {
+    display: none;
+}
+
+#dropText {
+    margin: 0;
+    padding: 0;
+    font-size: large;
+}
+
+.menus {
+    color: #ccc;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.filter-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.filter-btn {
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: left;
+    position: relative;
+}
+
+.filter-btn.selected {
+    background-color: #666;
+    border-left: 3px solid #007bff;
+}
+
+.filter-btn:hover {
+    background-color: #555;
+}
+
+.adjustment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+.slider-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.slider-group label {
+    color: #fff;
+    font-size: 14px;
+}
+
+.slider {
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right,
+        #555 0%,
+        #555 50%,
+        #555 50%,
+        #555 100%
+    );
+    outline: none;
+    border-radius: 2px;
+    appearance: none;
+    -webkit-appearance: none;
+    margin-top: 5px;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    background: #007bff;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+}
+
+.slider::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    background: #007bff;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    z-index: 2;
+    border: none;
+}
+
+.slider-zero {
+    position: absolute;
+    width: 2px;
+    height: 15px;
+    background: #666;
+    left: 51%;
+    bottom: 15px;
+    transform: translateX(-50%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.slider-zero::after {
+    content: '0';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    color: #666;
+}
+
+.crop-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.crop-area {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border: 2px solid white;
+    box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.5);
+    cursor: move;
+    touch-action: none;
+    pointer-events: auto;
+}
+
+.crop-area.square {
+    border-radius: 0;
+}
+
+.crop-area.round {
+    border-radius: 50%;
+}
+
+.crop-area::after {
+    content: '';
+    position: absolute;
+    right: -5px;
+    bottom: -5px;
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-radius: 50%;
+    cursor: se-resize;
+}
+
+.resizer {
+    position: absolute;
+    right: -8px;
+    bottom: -8px;
+    width: 16px;
+    height: 16px;
+    background: white;
+    border: 2px solid #007bff;
+    border-radius: 50%;
+    cursor: se-resize;
+    z-index: 1001;
+}
+
+.crop-controls {
+    position: fixed;
+    bottom: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.crop-controls button {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#applyCrop {
+    background-color: #28a745;
+    color: white;
+}
+
+#cancelCrop {
+    background-color: #dc3545;
+    color: white;
+}
+
+#applyCrop:hover {
+    background-color: #218838;
+}
+
+#cancelCrop:hover {
+    background-color: #c82333;
+}
+
+.crop-btn {
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: left;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.crop-btn:hover {
+    background-color: #555;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #333;
+    padding: 20px;
+    border-radius: 8px;
+    min-width: 300px;
+    color: white;
+}
+
+.modal-content h3 {
+    margin: 0 0 20px 0;
+    text-align: center;
+}
+
+.export-options {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.export-options button {
+    padding: 10px 20px;
+    background: #444;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+}
+
+.export-options button:hover {
+    background: #555;
+}
+
+.export-options button.selected {
+    background: #007bff;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.modal-buttons button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#downloadBtn {
+    background: #28a745;
+    color: white;
+}
+
+#closeModal {
+    background: #dc3545;
+    color: white;
+}
+
+#downloadBtn:hover {
+    background: #218838;
+}
+
+#closeModal:hover {
+    background: #c82333;
+}
+
+#exportBtn {
+    background-color: green;
+    color: white;
+}
+
+#exportBtn:hover {
+    background-color: darkgreen;
+}
