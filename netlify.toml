@@ -6,4 +6,9 @@
 [[headers]]
   for = "/*.css"
   [headers.values]
-    Content-Type = "text/css" 
+    Content-Type = "text/css"
+
+[build]
+  base = "/"   
+  publish = "dist"              
+  command = "npm run build"     
