@@ -1,4 +1,4 @@
-import './style.css?inline'
+import './style.css'
 import { api } from './js/wasmApi.js';
 import { handleFile, updatePreview, resetImage, exportImage, resetToUploadState } from './imageUtils.js';
 import { startCrop, applyCrop } from './cropUtils.js';
